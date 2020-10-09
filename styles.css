@@ -1,0 +1,240 @@
+/*--------------------------------------------------------------
+Global styles
+--------------------------------------------------------------*/
+:root {
+    --dark-magenta: hsl(300, 43%, 22%);
+    --soft-pink: hsl(333, 80%, 67%);
+    --dark-gray-magenta: hsl(303, 10%, 53%);
+    --light-gray-magenta: hsl(300, 24%, 96%);
+    --white: hsl(0, 0%, 100%);
+    --spartan-font: 'Spartan', sans-serif;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+/*--------------------------------------------------------------
+Typography
+--------------------------------------------------------------*/
+body {
+    margin: 0;
+    font-family: var(--spartan-font);
+    line-height: 1.5;
+    background-image: url("/images/bg-pattern-top-mobile.svg"), url("/images/bg-pattern-bottom-mobile.svg");
+    background-position: 0% 0%, 100% 100%;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto, auto;
+}
+
+.header-title {
+    font-size: 3rem;
+    color: var(--dark-magenta);
+    line-height: 1.2;
+}
+.header-sub-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--dark-gray-magenta);
+}
+
+.reviews p {
+    color: var(--dark-magenta);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.name {
+    color: var(--light-gray-magenta);
+    font-weight: 700;
+}
+.title {
+    color: var(--soft-pink);
+}
+q {
+    color: var(--light-gray-magenta);
+}
+
+.attribution {
+    text-align: center;
+}
+
+/*--------------------------------------------------------------
+General styling
+--------------------------------------------------------------*/
+.main-content {
+    max-width: 30rem;
+    margin: 0 auto;
+    position: relative;
+}
+    
+.header {
+    margin-bottom: 2rem;
+}
+
+.main-content {
+    padding: 2rem 1rem;
+}
+
+.header-title {
+    text-align: center;
+    margin: 0;
+    padding: 4rem 0 0;
+}
+
+p {
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Reviews Section  */
+.reviews {
+    margin: 0 2rem 2rem;
+}
+
+.stars {  
+    background-color: var(--light-gray-magenta);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+/* Feedback Cards Section  */
+.feedback-cards {
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--dark-magenta);
+    margin: 1.5rem 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.attribution {
+    margin: 1rem 0 0;
+    padding-bottom: 1rem;
+}
+
+/*--------------------------------------------------------------
+Cards
+--------------------------------------------------------------*/
+.card {
+    display: grid;
+    grid-template-columns: 4rem auto;
+    grid-template-rows: 1.5rem 4rem auto;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    grid-column: 1/2;
+    grid-row: 1/3;
+    align-self: center;
+}
+
+.name {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.title {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: flex-end
+}
+q {
+    grid-column: 1/3;
+}
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+@supports (grid-area: auto) {
+
+    @media screen and (min-width: 1440px) {
+
+        body, html {
+            height: 100%;
+            display: grid;
+        }
+
+        body {
+            background-image: url("/images/bg-pattern-top-desktop.svg"), url("/images/bg-pattern-bottom-desktop.svg");
+            background-position: 0% 0%, 100% 100%;
+            background-repeat: no-repeat, no-repeat;
+        }
+        
+        .main-content {
+            margin: auto;
+            max-width: 85%;
+            display: grid;
+            /* grid-template-columns: repeat(auto-fill, minmax(200px), 0.5fr); */
+            grid-template-columns: auto auto auto;
+        }
+        .header {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            padding-right: 10rem;
+        }
+        .header-title {
+            text-align: left;
+            padding-top: 0;
+            padding-right: 15rem;
+        }
+        .header-sub-title {
+            text-align: left;
+            padding-right: 8rem;
+            padding-left: 0;
+        }
+        .reviews {
+            grid-column: 2/3;
+            grid-row: 1/2;
+        }
+        .feedback-cards {
+            grid-column: 1/3;
+            grid-row: 2/3;
+        }
+        .attribution {
+            grid-column: 1/3;
+            grid-row: 3/4;
+        }
+        .stars {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0.5rem 0 0.5rem 2rem;
+            
+        }
+        .stars:first-of-type {
+            margin-left: -10rem;
+            margin-right: 10rem;
+        }
+        .stars:nth-of-type(2) {
+            margin-left: -7rem;
+            margin-right: 7rem;
+        }
+
+        .feedback-cards {
+            grid-column: 1/3;
+            grid-row: 2/3;
+            display: flex;
+            padding: 0;
+            margin-left: 0;
+        }
+        .card:nth-of-type(2) {
+            margin-top: 4rem;
+            margin-bottom: -4rem;
+        }
+        .card:last-of-type {
+            margin-top: 8rem;
+            margin-bottom: -8rem;
+        }
+    
+    }
+}
